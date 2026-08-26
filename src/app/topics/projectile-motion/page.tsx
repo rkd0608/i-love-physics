@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import TopicCard from "@/components/explore/TopicCard";
-import TeX from "@/components/math/TeX";
+import DissectibleEquation from "@/components/math/DissectibleEquation";
 import ProjectileLab from "@/components/labs/ProjectileLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
@@ -99,7 +99,25 @@ export default function ProjectileMotionPage() {
         </p>
       </Section>
 
-              <Section index="02" title="Interactive simulation" wide>
+      <Section index="02" title="Explain it like I’m five">
+        <p className="leading-relaxed text-fg/90">
+          Throw a ball to a friend. Up it goes, then down it comes,
+          drawing a smooth rainbow shape in the air. You did not steer
+          it — two simple things did it together. Across the yard, the
+          ball just keeps drifting along, steady as anything. The whole
+          time, gravity — the invisible pull — tugs it down, every
+          single moment. Steady across plus gentle tug-down paints that
+          rainbow, every time. Toss harder and the rainbow stretches
+          wider. Toss straight up and it squishes into a line.
+        </p>
+        <p className="leading-relaxed text-fg/90">
+          <strong className="text-fg">
+            Every thrown thing draws the same rainbow shape.
+          </strong>
+        </p>
+      </Section>
+
+              <Section index="03" title="Interactive simulation" wide>
 
               <ProjectileLab />
 
@@ -108,23 +126,21 @@ export default function ProjectileMotionPage() {
 
       </Section>
 
-      <Section index="03" title="The equations">
+      <Section index="04" title="The equations">
         <div className="space-y-4">
-          {equations.map((row) => (
-            <figure
+          {equations.map((row, i) => (
+            <DissectibleEquation
               key={row.tex}
-              className="rounded-2xl border border-line bg-panel px-5 py-4"
-            >
-              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
-              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
-                {row.note}
-              </figcaption>
-            </figure>
+              slug="projectile-motion"
+              index={i}
+              tex={row.tex}
+              decode={row.note}
+            />
           ))}
         </div>
       </Section>
 
-      <Section index="04" title="Why it works">
+      <Section index="05" title="Why it works">
         <p className="leading-relaxed text-fg/90">
           Without drag the problem decomposes: horizontal motion at constant
           velocity, vertical motion at constant acceleration, and the parabola
@@ -134,7 +150,7 @@ export default function ProjectileMotionPage() {
         </p>
       </Section>
 
-      <Section index="05" title="Things to try">
+      <Section index="06" title="Things to try">
         <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
           {experiments.map((item) => (
             <li key={item} className="leading-relaxed text-fg/90">
@@ -144,7 +160,7 @@ export default function ProjectileMotionPage() {
         </ol>
       </Section>
 
-      <Section index="06" title="Related topics">
+      <Section index="07" title="Related topics">
         <div className="grid gap-5 sm:grid-cols-2">
           {related.map((rel) => (
             <TopicCard key={rel.slug} topic={rel} />

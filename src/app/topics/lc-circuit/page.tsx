@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import TopicCard from "@/components/explore/TopicCard";
-import TeX from "@/components/math/TeX";
+import DissectibleEquation from "@/components/math/DissectibleEquation";
 import LCCircuitLab from "@/components/labs/LCCircuitLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
@@ -105,7 +105,19 @@ export default function LCCircuitPage() {
         </p>
       </Section>
 
-              <Section index="02" title="Interactive simulation" wide>
+      <Section index="02" title="Explain it like I’m five">
+        <p className="leading-relaxed text-fg/90">
+          A capacitor is a box that holds push. A coil is a box that holds
+          flow. Wire them into a loop and the electricity starts sloshing
+          between the boxes, like water tipping between two buckets. The push
+          bucket empties into the flow bucket, then everything tips straight
+          back again. It swings at one steady rhythm forever, and nothing gets
+          used up. Make either bucket bigger and the slosh slows down.{" "}
+          <strong className="text-fg">Electricity sloshes between push-box and flow-box like water.</strong>
+        </p>
+      </Section>
+
+              <Section index="03" title="Interactive simulation" wide>
 
               <LCCircuitLab />
 
@@ -114,18 +126,16 @@ export default function LCCircuitPage() {
 
       </Section>
 
-      <Section index="03" title="The equations">
+      <Section index="04" title="The equations">
         <div className="space-y-4">
-          {equations.map((row) => (
-            <figure
+          {equations.map((row, i) => (
+            <DissectibleEquation
               key={row.tex}
-              className="rounded-2xl border border-line bg-panel px-5 py-4"
-            >
-              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
-              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
-                {row.note}
-              </figcaption>
-            </figure>
+              slug="lc-circuit"
+              index={i}
+              tex={row.tex}
+              decode={row.note}
+            />
           ))}
           <figure className="overflow-hidden rounded-2xl border border-line bg-panel">
             <table className="w-full text-sm">
@@ -154,7 +164,7 @@ export default function LCCircuitPage() {
         </div>
       </Section>
 
-      <Section index="04" title="Why it works">
+      <Section index="05" title="Why it works">
         <p className="leading-relaxed text-fg/90">
           Kirchhoff’s loop law is simple-harmonic motion’s differential
           equation in disguise: the inductor supplies inertia (
@@ -183,7 +193,7 @@ export default function LCCircuitPage() {
         </p>
       </Section>
 
-      <Section index="05" title="Things to try">
+      <Section index="06" title="Things to try">
         <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
           {experiments.map((item) => (
             <li key={item} className="leading-relaxed text-fg/90">
@@ -193,7 +203,7 @@ export default function LCCircuitPage() {
         </ol>
       </Section>
 
-      <Section index="06" title="Related topics">
+      <Section index="07" title="Related topics">
         <div className="grid gap-5 sm:grid-cols-2">
           {related.map((rel) => (
             <TopicCard key={rel.slug} topic={rel} />

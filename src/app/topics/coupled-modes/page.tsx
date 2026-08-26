@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import TopicCard from "@/components/explore/TopicCard";
-import TeX from "@/components/math/TeX";
+import DissectibleEquation from "@/components/math/DissectibleEquation";
 import CoupledModesLab from "@/components/labs/CoupledModesLab";
 import { domainLabel, getTopic } from "@/lib/topics";
 import type { TopicMeta } from "@/lib/topics";
@@ -108,7 +108,25 @@ export default function CoupledModesPage() {
         </p>
       </Section>
 
-              <Section index="02" title="Interactive simulation" wide>
+      <Section index="02" title="Explain it like I’m five">
+        <p className="leading-relaxed text-fg/90">
+          Imagine two balls, each hanging from its own spring, tied
+          together by a rubber band in the middle. Give one ball a
+          push. Wiggle, wiggle — then something funny happens. The
+          first ball slows down and almost stops while the second ball
+          picks up the very same wiggle! The wiggle crept across the
+          rubber band, and soon it will creep back again. Push both
+          balls the same way together, though, and the rubber band
+          never stretches, so nobody ever hands their wiggle over.
+        </p>
+        <p className="leading-relaxed text-fg/90">
+          <strong className="text-fg">
+            The wiggle hops from one ball to the other.
+          </strong>
+        </p>
+      </Section>
+
+              <Section index="03" title="Interactive simulation" wide>
 
               <CoupledModesLab />
 
@@ -117,23 +135,21 @@ export default function CoupledModesPage() {
 
       </Section>
 
-      <Section index="03" title="The equations">
+      <Section index="04" title="The equations">
         <div className="space-y-4">
-          {equations.map((row) => (
-            <figure
+          {equations.map((row, i) => (
+            <DissectibleEquation
               key={row.tex}
-              className="rounded-2xl border border-line bg-panel px-5 py-4"
-            >
-              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
-              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
-                {row.note}
-              </figcaption>
-            </figure>
+              slug="coupled-modes"
+              index={i}
+              tex={row.tex}
+              decode={row.note}
+            />
           ))}
         </div>
       </Section>
 
-      <Section index="04" title="Why it works">
+      <Section index="05" title="Why it works">
         <p className="leading-relaxed text-fg/90">
           Symmetry diagonalizes the system. Because the two masses are equal
           and identically anchored, the sum and difference of their positions
@@ -157,7 +173,7 @@ export default function CoupledModesPage() {
         </p>
       </Section>
 
-      <Section index="05" title="Things to try">
+      <Section index="06" title="Things to try">
         <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
           {experiments.map((item) => (
             <li key={item} className="leading-relaxed text-fg/90">
@@ -167,7 +183,7 @@ export default function CoupledModesPage() {
         </ol>
       </Section>
 
-      <Section index="06" title="Related topics">
+      <Section index="07" title="Related topics">
         <div className="grid gap-5 sm:grid-cols-2">
           {related.map((rel) => (
             <TopicCard key={rel.slug} topic={rel} />

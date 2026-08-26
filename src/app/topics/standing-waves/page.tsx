@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import TopicCard from "@/components/explore/TopicCard";
-import TeX from "@/components/math/TeX";
+import DissectibleEquation from "@/components/math/DissectibleEquation";
 import StandingWavesLab from "@/components/labs/StandingWavesLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
@@ -131,7 +131,22 @@ export default function StandingWavesPage() {
         </p>
       </Section>
 
-              <Section index="02" title="Interactive simulation" wide>
+      <Section index="02" title="Explain it like I’m five">
+        <p className="leading-relaxed text-fg/90">
+          Tie a jump rope to a doorknob and shake it. Most shakes race down,
+          flip at the door, and come back jumbled, so the rope just flops.
+          Shake at exactly the right rhythm, though, and the rope stops
+          travelling. It holds a still shape — one big arch, or two, or three
+          — swinging in place, with dots along it that refuse to move. A
+          guitar string only sings those special shapes, and each shape is one
+          note.{" "}
+          <strong className="text-fg">
+            Only special shakes survive, and each survivor is one note.
+          </strong>
+        </p>
+      </Section>
+
+              <Section index="03" title="Interactive simulation" wide>
 
               <StandingWavesLab />
 
@@ -140,23 +155,21 @@ export default function StandingWavesPage() {
 
       </Section>
 
-      <Section index="03" title="The equations">
+      <Section index="04" title="The equations">
         <div className="space-y-4">
-          {equations.map((row) => (
-            <figure
+          {equations.map((row, i) => (
+            <DissectibleEquation
               key={row.tex}
-              className="rounded-2xl border border-line bg-panel px-5 py-4"
-            >
-              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
-              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
-                {row.note}
-              </figcaption>
-            </figure>
+              slug="standing-waves"
+              index={i}
+              tex={row.tex}
+              decode={row.note}
+            />
           ))}
         </div>
       </Section>
 
-      <Section index="04" title="Why it works">
+      <Section index="05" title="Why it works">
         <p className="leading-relaxed text-fg/90">
           Boundary conditions quantize allowed wavelengths. “Both ends fixed”
           is a single geometric demand, yet it filters a continuum of possible
@@ -168,7 +181,7 @@ export default function StandingWavesPage() {
         </p>
       </Section>
 
-      <Section index="05" title="Things to try">
+      <Section index="06" title="Things to try">
         <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
           {experiments.map((item) => (
             <li key={item.id} className="leading-relaxed text-fg/90">
@@ -178,7 +191,7 @@ export default function StandingWavesPage() {
         </ol>
       </Section>
 
-      <Section index="06" title="Related topics">
+      <Section index="07" title="Related topics">
         <div className="grid gap-5 sm:grid-cols-2">
           {related.map((rel) => (
             <TopicCard key={rel.slug} topic={rel} />

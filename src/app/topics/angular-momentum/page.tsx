@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import TopicCard from "@/components/explore/TopicCard";
-import TeX from "@/components/math/TeX";
+import DissectibleEquation from "@/components/math/DissectibleEquation";
 import AngularMomentumLab from "@/components/labs/AngularMomentumLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
@@ -102,7 +102,26 @@ export default function AngularMomentumPage() {
         </p>
       </Section>
 
-              <Section index="02" title="Interactive simulation" wide>
+      <Section index="02" title="Explain it like I’m five">
+        <p className="leading-relaxed text-fg/90">
+          Spin yourself around with your arms stretched out wide, like
+          an airplane. Now hug your arms in tight to your tummy.
+          Whoosh! Suddenly you are spinning much faster, and nobody
+          gave you a push. How? Your arms were already riding in
+          circles with you. Pulled in close, they have a shorter trip
+          around, so they zip around quicker to make up for it.
+          Nothing outside ever touched you — the faster spin was
+          hiding inside you all along. Ice skaters twirl exactly this
+          way.
+        </p>
+        <p className="leading-relaxed text-fg/90">
+          <strong className="text-fg">
+            Pulling in makes the same spin go faster.
+          </strong>
+        </p>
+      </Section>
+
+              <Section index="03" title="Interactive simulation" wide>
 
               <AngularMomentumLab />
 
@@ -111,23 +130,21 @@ export default function AngularMomentumPage() {
 
       </Section>
 
-      <Section index="03" title="The equations">
+      <Section index="04" title="The equations">
         <div className="space-y-4">
-          {equations.map((row) => (
-            <figure
+          {equations.map((row, i) => (
+            <DissectibleEquation
               key={row.tex}
-              className="rounded-2xl border border-line bg-panel px-5 py-4"
-            >
-              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
-              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
-                {row.note}
-              </figcaption>
-            </figure>
+              slug="angular-momentum"
+              index={i}
+              tex={row.tex}
+              decode={row.note}
+            />
           ))}
         </div>
       </Section>
 
-      <Section index="04" title="Why it works">
+      <Section index="05" title="Why it works">
         <p className="leading-relaxed text-fg/90">
           Torque-free means L is frozen — a bookkeeping entry the universe
           refuses to edit. Shrinking I then forces ω upward through Iω =
@@ -140,7 +157,7 @@ export default function AngularMomentumPage() {
         </p>
       </Section>
 
-      <Section index="05" title="Things to try">
+      <Section index="06" title="Things to try">
         <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
           {experiments.map((item) => (
             <li key={item} className="leading-relaxed text-fg/90">
@@ -150,7 +167,7 @@ export default function AngularMomentumPage() {
         </ol>
       </Section>
 
-      <Section index="06" title="Related topics">
+      <Section index="07" title="Related topics">
         <div className="grid gap-5 sm:grid-cols-2">
           {related.map((rel) => (
             <TopicCard key={rel.slug} topic={rel} />

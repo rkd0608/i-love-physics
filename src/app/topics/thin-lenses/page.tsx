@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import TopicCard from "@/components/explore/TopicCard";
-import TeX from "@/components/math/TeX";
+import DissectibleEquation from "@/components/math/DissectibleEquation";
 import ThinLensLab from "@/components/labs/ThinLensLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
@@ -98,7 +98,21 @@ export default function ThinLensesPage() {
         </p>
       </Section>
 
-              <Section index="02" title="Interactive simulation" wide>
+      <Section index="02" title="Explain it like I’m five">
+        <p className="leading-relaxed text-fg/90">
+          Go outside on a sunny day with a magnifying glass. Tilt it at the
+          sidewalk and all the sunshine squeezes into one tiny hot dot. The
+          curved glass nudges every ray by just the right amount so they all
+          land in the same spot. Slide your hand up and down and the dot
+          blurs, sharpens, blurs again. That is all a lens does: steer rays so
+          a picture of things lands where your eye or a camera can grab it.{" "}
+          <strong className="text-fg">
+            A lens bends rays so they all meet in one spot.
+          </strong>
+        </p>
+      </Section>
+
+              <Section index="03" title="Interactive simulation" wide>
 
               <ThinLensLab />
 
@@ -107,23 +121,21 @@ export default function ThinLensesPage() {
 
       </Section>
 
-      <Section index="03" title="The equations">
+      <Section index="04" title="The equations">
         <div className="space-y-4">
-          {equations.map((row) => (
-            <figure
+          {equations.map((row, i) => (
+            <DissectibleEquation
               key={row.tex}
-              className="rounded-2xl border border-line bg-panel px-5 py-4"
-            >
-              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
-              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
-                {row.note}
-              </figcaption>
-            </figure>
+              slug="thin-lenses"
+              index={i}
+              tex={row.tex}
+              decode={row.note}
+            />
           ))}
         </div>
       </Section>
 
-      <Section index="04" title="Why it works">
+      <Section index="05" title="Why it works">
         <p className="leading-relaxed text-fg/90">
           A thin lens tips every ray by an angle proportional to its height on
           the glass — small-angle linearity quietly doing the work. Because the
@@ -135,7 +147,7 @@ export default function ThinLensesPage() {
         </p>
       </Section>
 
-      <Section index="05" title="Things to try">
+      <Section index="06" title="Things to try">
         <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
           {experiments.map((item) => (
             <li key={item} className="leading-relaxed text-fg/90">
@@ -145,7 +157,7 @@ export default function ThinLensesPage() {
         </ol>
       </Section>
 
-      <Section index="06" title="Related topics">
+      <Section index="07" title="Related topics">
         <div className="grid gap-5 sm:grid-cols-2">
           {related.map((rel) => (
             <TopicCard key={rel.slug} topic={rel} />

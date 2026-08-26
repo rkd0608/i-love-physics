@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
@@ -8,6 +8,9 @@ import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 type AuthFormMode = "signin" | "signup";
 type AuthFormStatus = "idle" | "submitting" | "error" | "check-email";
+type ResendState = "idle" | "sending" | "sent" | "error";
+
+const RESEND_COOLDOWN_SECONDS = 30;
 
 const OAUTH_PROVIDERS = [
   { provider: "google", label: "Continue with Google" },
@@ -41,13 +44,50 @@ export default function AuthForm({ mode }: { mode: AuthFormMode }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [resendState, setResendState] = useState<ResendState>("idle");
+  const [resendMessage, setResendMessage] = useState<string | null>(null);
+  const [cooldownSeconds, setCooldownSeconds] = useState(0);
 
   const isSignUp = mode === "signup";
   const submitting = status === "submitting";
+  const resending = resendState === "sending";
+
+  useEffect(() => {
+    if (cooldownSeconds <= 0) return;
+    const timer = setInterval(() => {
+      setCooldownSeconds((seconds) => Math.max(seconds - 1, 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [cooldownSeconds]);
 
   function fail(message: string) {
     setStatus("error");
     setErrorMessage(message);
+  }
+
+  async function handleResend() {
+    const client = getSupabaseBrowser();
+    if (!client || !email) return;
+    setResendState("sending");
+    setResendMessage(null);
+    try {
+      const { error } = await client.auth.resend({
+        type: "signup",
+        email,
+        options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      });
+      if (error) throw error;
+      setResendState("sent");
+      setResendMessage("Sent — check again");
+      setCooldownSeconds(RESEND_COOLDOWN_SECONDS);
+    } catch (caught) {
+      setResendState("error");
+      setResendMessage(
+        humanizeAuthError(
+          caught instanceof Error ? caught.message : "",
+        ),
+      );
+    }
   }
 
   async function handleOAuth(provider: OAuthProvider) {
@@ -78,7 +118,13 @@ export default function AuthForm({ mode }: { mode: AuthFormMode }) {
     let needsConfirmation = false;
     try {
       if (isSignUp) {
-        const { data, error } = await client.auth.signUp({ email, password });
+        const { data, error } = await client.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/auth/callback`,
+          },
+        });
         if (error) throw error;
         if (!data || data.session === null) needsConfirmation = true;
       } else {
@@ -115,12 +161,37 @@ export default function AuthForm({ mode }: { mode: AuthFormMode }) {
           We sent a confirmation link to <span className="font-medium">{email}</span>.
           Open it, confirm your address, then come back to sign in.
         </p>
-        <Link
-          href="/signin"
-          className="focus-ring inline-flex items-center justify-center rounded-full bg-accent px-6 py-2.5 font-medium text-[#04121a] transition-opacity hover:opacity-90"
-        >
-          Back to sign in
-        </Link>
+        {resendMessage ? (
+          resendState === "error" ? (
+            <p role="alert" className="text-sm text-rose-400">
+              {resendMessage}
+            </p>
+          ) : (
+            <p role="status" className="text-sm text-emerald-400">
+              {resendMessage}
+            </p>
+          )
+        ) : null}
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => void handleResend()}
+            disabled={resending || cooldownSeconds > 0}
+            className="focus-ring inline-flex items-center justify-center rounded-full border border-line bg-transparent px-5 py-2 text-sm font-medium text-fg transition-colors hover:border-accent/60 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {resending
+              ? "Sending…"
+              : cooldownSeconds > 0
+                ? `Resend available in ${cooldownSeconds}s`
+                : "Didn’t get it? Resend email"}
+          </button>
+          <Link
+            href="/signin"
+            className="focus-ring inline-flex items-center justify-center rounded-full bg-accent px-6 py-2.5 font-medium text-[#04121a] transition-opacity hover:opacity-90"
+          >
+            Back to sign in
+          </Link>
+        </div>
       </div>
     );
   }

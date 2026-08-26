@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import TopicCard from "@/components/explore/TopicCard";
-import TeX from "@/components/math/TeX";
+import DissectibleEquation from "@/components/math/DissectibleEquation";
 import HarmonicOscillatorLab from "@/components/labs/HarmonicOscillatorLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
@@ -104,7 +104,26 @@ export default function HarmonicOscillatorPage() {
         </p>
       </Section>
 
-              <Section index="02" title="Interactive simulation" wide>
+      <Section index="02" title="Explain it like I’m five">
+        <p className="leading-relaxed text-fg/90">
+          Imagine a ball dangling from a bouncy spring. Pull it down a
+          little and let go. The stretchy spring pulls the ball back up
+          — but the ball rushes too far and overshoots! So the spring
+          pulls it back down. Overshoot again. Back and forth it goes:
+          wiggle, wiggle, wiggle, always in the same rhythm. A swing
+          does it. A guitar string does it. Anything that gets tugged
+          home harder the farther it wanders wiggles this way, ticking
+          like a little clock.
+        </p>
+        <p className="leading-relaxed text-fg/90">
+          <strong className="text-fg">
+            Everything that gets pulled home wiggles in its own steady
+            rhythm.
+          </strong>
+        </p>
+      </Section>
+
+              <Section index="03" title="Interactive simulation" wide>
 
               <HarmonicOscillatorLab />
 
@@ -113,23 +132,21 @@ export default function HarmonicOscillatorPage() {
 
       </Section>
 
-      <Section index="03" title="The equations">
+      <Section index="04" title="The equations">
         <div className="space-y-4">
-          {equations.map((row) => (
-            <figure
+          {equations.map((row, i) => (
+            <DissectibleEquation
               key={row.tex}
-              className="rounded-2xl border border-line bg-panel px-5 py-4"
-            >
-              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
-              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
-                {row.note}
-              </figcaption>
-            </figure>
+              slug="harmonic-oscillator"
+              index={i}
+              tex={row.tex}
+              decode={row.note}
+            />
           ))}
         </div>
       </Section>
 
-      <Section index="04" title="Why it works">
+      <Section index="05" title="Why it works">
         <p className="leading-relaxed text-fg/90">
           Linearization is the whole trick: near any stable equilibrium, Taylor
           expansion leaves nothing but a spring, a mass, and a dashpot. That is
@@ -139,7 +156,7 @@ export default function HarmonicOscillatorPage() {
         </p>
       </Section>
 
-      <Section index="05" title="Things to try">
+      <Section index="06" title="Things to try">
         <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
           {experiments.map((item) => (
             <li key={item} className="leading-relaxed text-fg/90">
@@ -149,7 +166,7 @@ export default function HarmonicOscillatorPage() {
         </ol>
       </Section>
 
-      <Section index="06" title="Related topics">
+      <Section index="07" title="Related topics">
         <div className="grid gap-5 sm:grid-cols-2">
           {related.map((rel) => (
             <TopicCard key={rel.slug} topic={rel} />

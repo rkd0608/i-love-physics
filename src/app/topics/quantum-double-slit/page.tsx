@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import TopicCard from "@/components/explore/TopicCard";
-import TeX from "@/components/math/TeX";
+import DissectibleEquation from "@/components/math/DissectibleEquation";
 import QuantumDoubleSlitLab from "@/components/labs/QuantumDoubleSlitLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
@@ -101,7 +101,22 @@ export default function QuantumDoubleSlitPage() {
         </p>
       </Section>
 
-              <Section index="02" title="Interactive simulation" wide>
+      <Section index="02" title="Explain it like I’m five">
+        <p className="leading-relaxed text-fg/90">
+          Throw tiny dots at a wall with two little doors. Even one dot at a
+          time lands in stripes, as if each dot snuck through both doors and
+          high-fived itself on the other side. Its maybe-map says “maybe left
+          door, maybe right door,” and the two maybes add up or cancel like
+          ripples in a bath. Peek to see which door a dot uses, and the stripes
+          vanish.{" "}
+          <strong className="text-fg">
+            The dots aren’t hiding from you — your peek shrinks their
+            maybe-map.
+          </strong>
+        </p>
+      </Section>
+
+              <Section index="03" title="Interactive simulation" wide>
 
               <QuantumDoubleSlitLab />
 
@@ -110,23 +125,21 @@ export default function QuantumDoubleSlitPage() {
 
       </Section>
 
-      <Section index="03" title="The equations">
+      <Section index="04" title="The equations">
         <div className="space-y-4">
-          {equations.map((row) => (
-            <figure
+          {equations.map((row, i) => (
+            <DissectibleEquation
               key={row.tex}
-              className="rounded-2xl border border-line bg-panel px-5 py-4"
-            >
-              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
-              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
-                {row.note}
-              </figcaption>
-            </figure>
+              slug="quantum-double-slit"
+              index={i}
+              tex={row.tex}
+              decode={row.note}
+            />
           ))}
         </div>
       </Section>
 
-      <Section index="04" title="Why it works">
+      <Section index="05" title="Why it works">
         <p className="leading-relaxed text-fg/90">
           Amplitudes add before squaring. While nobody watches, each particle
           travels as ψ₁+ψ₂ — two indistinguishable stories whose sum paints the
@@ -146,7 +159,7 @@ export default function QuantumDoubleSlitPage() {
         </p>
       </Section>
 
-      <Section index="05" title="Things to try">
+      <Section index="06" title="Things to try">
         <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
           {experiments.map((item) => (
             <li key={item} className="leading-relaxed text-fg/90">
@@ -156,7 +169,7 @@ export default function QuantumDoubleSlitPage() {
         </ol>
       </Section>
 
-      <Section index="06" title="Related topics">
+      <Section index="07" title="Related topics">
         <div className="grid gap-5 sm:grid-cols-2">
           {related.map((rel) => (
             <TopicCard key={rel.slug} topic={rel} />
