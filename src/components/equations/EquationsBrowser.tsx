@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import EquationAnatomy from "@/components/math/EquationAnatomy";
 import TeX from "@/components/math/TeX";
+import { ANATOMY } from "@/lib/anatomy";
 import type { EquationGroup } from "@/lib/equations";
 import type { Domain } from "@/lib/topics";
 import { DOMAINS, domainLabel, getTopic } from "@/lib/topics";
@@ -39,6 +41,7 @@ export default function EquationsBrowser({
   const [query, setQuery] = useState("");
   const [activeDomain, setActiveDomain] = useState<DomainFilter>("all");
   const [expanded, setExpanded] = useState<ReadonlySet<string>>(new Set());
+  const [dissecting, setDissecting] = useState<ReadonlySet<string>>(new Set());
 
   const filtered = useMemo(
     () => matchGroups(groups, query, activeDomain),
@@ -74,6 +77,19 @@ export default function EquationsBrowser({
         next.delete(slug);
       } else {
         next.add(slug);
+      }
+      return next;
+    });
+  };
+
+  const toggleDissect = (slug: string, index: number): void => {
+    const key = `${slug}:${index}`;
+    setDissecting((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
       }
       return next;
     });
@@ -232,19 +248,55 @@ export default function EquationsBrowser({
                           className="px-5 pb-5 sm:px-6 sm:pb-6"
                         >
                           <ul className="flex flex-col gap-6">
-                            {group.entries.map((entry) => (
-                              <li
-                                key={entry.tex}
-                                className="grid gap-3 border-t border-line pt-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center sm:gap-8"
-                              >
-                                <div className="overflow-x-auto">
-                                  <TeX tex={entry.tex} block />
-                                </div>
-                                <p className="text-sm leading-relaxed text-muted">
-                                  {entry.note}
-                                </p>
-                              </li>
-                            ))}
+                            {group.entries.map((entry, entryIndex) => {
+                              const anatomyParts =
+                                ANATOMY[group.slug]?.[entryIndex];
+                              const dissectOpen = dissecting.has(
+                                `${group.slug}:${entryIndex}`,
+                              );
+                              return (
+                                <li
+                                  key={entry.tex}
+                                  className="grid gap-3 border-t border-line pt-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center sm:gap-8"
+                                >
+                                  <div className="overflow-x-auto">
+                                    <TeX tex={entry.tex} block />
+                                  </div>
+                                  <div className="flex flex-col items-start gap-3">
+                                    <p className="text-sm leading-relaxed text-muted">
+                                      {entry.note}
+                                    </p>
+                                    {anatomyParts ? (
+                                      <button
+                                        type="button"
+                                        aria-expanded={dissectOpen}
+                                        aria-controls={`equations-${group.slug}-anatomy-${entryIndex}`}
+                                        onClick={() =>
+                                          toggleDissect(
+                                            group.slug,
+                                            entryIndex,
+                                          )
+                                        }
+                                        className="focus-ring rounded-full border border-line px-2.5 py-1 text-xs text-muted transition-colors hover:border-accent/40 hover:text-accent"
+                                      >
+                                        Dissect
+                                      </button>
+                                    ) : null}
+                                  </div>
+                                  {anatomyParts && dissectOpen ? (
+                                    <div
+                                      id={`equations-${group.slug}-anatomy-${entryIndex}`}
+                                      className="sm:col-span-2"
+                                    >
+                                      <EquationAnatomy
+                                        parts={anatomyParts}
+                                        label={`${group.title} · equation ${entryIndex + 1}`}
+                                      />
+                                    </div>
+                                  ) : null}
+                                </li>
+                              );
+                            })}
                           </ul>
                           {topic ? (
                             <div className="mt-6 border-t border-line pt-4">
