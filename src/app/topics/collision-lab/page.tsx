@@ -1,0 +1,155 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import type { ReactNode } from "react";
+import TopicCard from "@/components/explore/TopicCard";
+import TeX from "@/components/math/TeX";
+import CollisionLab from "@/components/labs/CollisionLab";
+import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+
+export const metadata: Metadata = {
+  title: "Collision Lab",
+  description:
+    "Two gliders, one ledger: momentum balances to the last decimal while kinetic energy negotiates.",
+};
+
+const topic = getTopic("collision-lab")!;
+
+const equations = [
+  {
+    tex: "m_1 u_1 + m_2 u_2 = m_1 v_1 + m_2 v_2",
+    note: "Momentum conservation: the total before contact equals the total after, no matter the masses, speeds, or restitution.",
+  },
+  {
+    tex: "e = \\frac{v_2' - v_1'}{u_1 - u_2}",
+    note: "Newton’s restitution: the separation speed as a fraction of the approach speed, priced between zero and one.",
+  },
+  {
+    tex: "\\Delta KE = \\tfrac{1}{2}\\mu(1-e^2)(u_1-u_2)^2",
+    note: "Energy lost in the impact, with μ the reduced mass m₁m₂/(m₁+m₂). It vanishes at e = 1 and peaks at e = 0.",
+  },
+  {
+    tex: "e = 1:\\ \\text{elastic} \\qquad e = 0:\\ \\text{perfectly inelastic}",
+    note: "The two bookend collisions: perfect bounce-back that keeps every joule, and the sticky merger that keeps only momentum.",
+  },
+];
+
+const experiments = [
+  "Set “Restitution e” to 0 for the sticky merger: the gliders leave with identical velocities and the ledger books the maximum possible ΔKE.",
+  "Push “Mass m₁” far above “Mass m₂” for the bowling-ball-pin bounce-back — the pin flies off fast while the heavy ball barely notices.",
+  "Hunt for u₁, u₂ and e that leave both gliders with equal post-collision speeds, then verify against the ledger’s Σp rows.",
+];
+
+function Section({
+  index,
+  title,
+  wide = false,
+  children,
+}: {
+  index: string;
+  title: string;
+  wide?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <section className={`space-y-5 ${wide ? "" : "max-w-3xl"}`}>
+      <div className="flex items-center gap-3">
+        <span className="font-mono text-xs uppercase tracking-widest text-accent">
+          {index}
+        </span>
+        <span className="h-px flex-1 bg-line" />
+      </div>
+      <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+      {children}
+    </section>
+  );
+}
+
+export default function CollisionLabPage() {
+  const related = relatedTopics("collision-lab");
+  return (
+    <div className="mx-auto w-full max-w-4xl space-y-16 px-6 py-14 sm:py-20">
+      <nav className="max-w-3xl">
+        <Link
+          href="/explore"
+          className="focus-ring rounded-sm text-sm text-muted transition-colors hover:text-accent"
+        >
+          ← Explore
+        </Link>
+      </nav>
+
+      <header className="max-w-3xl space-y-4">
+        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+          {topic.title}
+        </h1>
+        <p className="text-lg text-muted">{topic.tagline}</p>
+        <p className="w-fit rounded-full border border-accent-2/30 px-3 py-1 text-xs uppercase tracking-wide text-accent-2">
+          {domainLabel(topic.domain)}
+        </p>
+      </header>
+
+      <Section index="01" title="Overview">
+        <p className="leading-relaxed text-fg/90">
+          Conservation of momentum is the one law in the room with no
+          exceptions. Crash anything into anything else — sticky, springy, or
+          somewhere between — and the books close to the last decimal every
+          single time. What actually varies is the energy settlement: elastic
+          impacts refund every joule, messy ones write some off as heat and
+          deformation. Send two air-track gliders into each other at any masses
+          and speeds, dial restitution from glass-ball to lump-of-putty, and
+          watch the ledger prove that momentum never blinks.
+        </p>
+      </Section>
+
+      <Section index="02" title="Interactive simulation" wide>
+        <CollisionLab />
+      </Section>
+
+      <Section index="03" title="The equations">
+        <div className="space-y-4">
+          {equations.map((row) => (
+            <figure
+              key={row.tex}
+              className="rounded-2xl border border-line bg-panel px-5 py-4"
+            >
+              <TeX tex={row.tex} block className="overflow-x-auto text-lg" />
+              <figcaption className="mt-2 text-sm leading-relaxed text-muted">
+                {row.note}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </Section>
+
+      <Section index="04" title="Why it works">
+        <p className="leading-relaxed text-fg/90">
+          During contact the gliders push on each other with equal and opposite
+          forces — Newton’s third-law symmetry — so their momentum changes
+          cancel exactly, whatever the force law between them looks like.
+          Momentum closure is therefore forced every time, by symmetry alone.
+          Restitution just prices the energy leak: a softer collision holds
+          contact longer and diverts more of the relative kinetic energy into
+          heat, sound, and permanent dents, which is precisely the{" "}
+          {"½μ(1−e²)u²"} the ledger deducts.
+        </p>
+      </Section>
+
+      <Section index="05" title="Things to try">
+        <ol className="list-decimal space-y-3 pl-5 marker:text-accent">
+          {experiments.map((item) => (
+            <li key={item} className="leading-relaxed text-fg/90">
+              {item}
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section index="06" title="Related topics">
+        <div className="grid gap-5 sm:grid-cols-2">
+          {related.map((rel) => (
+            <TopicCard key={rel.slug} topic={rel} />
+          ))}
+        </div>
+      </Section>
+    </div>
+  );
+}
