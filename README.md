@@ -1,64 +1,102 @@
+<div align="center">
+
+<img src="src/app/icon.svg" width="72" alt="i love physics — a heart-shaped orbit with a particle riding the upper lobe" />
+
 # i love physics
 
-i love physics is an interactive, cinematic way into physics. Each topic pairs a live Canvas 2D simulation with real mathematics rendered in KaTeX, so you can feel a concept — steer an orbit, drag a pendulum into chaos, widen a fringe pattern — while the governing equations sit beside it. Built for curiosity: no accounts, no setup, just physics you can touch.
+**Cinematic physics you can grab.** 34 interactive simulations, living equations, and a growing glossary — from Newton’s orbits to the logistic map.
 
-## Stack
+[![Live Site](https://img.shields.io/badge/live-i--love--physics.vercel.app-53d6f2?style=for-the-badge&logo=vercel)](https://i-love-physics.vercel.app)
+[![Topics](https://img.shields.io/badge/simulations-34-b48cf2?style=for-the-badge)](#the-collection)
+[![Glossary](https://img.shields.io/badge/glossary-90%20terms-ffd27a?style=for-the-badge)](https://i-love-physics.vercel.app/glossary)
 
-- **Next.js 16** (App Router) + **React 19**, TypeScript strict
-- **Tailwind CSS v4** (`@tailwindcss/postcss`) with CSS-variable theming and dark mode
-- **KaTeX** for typeset equations
-- System font stacks only; zero client-side data dependencies
+*Every slider rewrites the equation. Every equation drives the simulation.*
 
-## Scripts
+</div>
 
-| Command         | What it does                    |
-| --------------- | ------------------------------- |
-| `npm run dev`   | Start the dev server            |
-| `npm run build` | Production build                |
-| `npm run start` | Serve the production build      |
-| `npm run lint`  | Run ESLint across the project   |
+---
 
-## Architecture
+## ✨ What makes it different
+
+Most physics sites show you diagrams. **i love physics** puts the system in your hands:
+
+- 🔴 **Real numerics, not canned animations** — semi-implicit Euler, RK4, split-step FFT for quantum tunneling, Newton-iterated Kepler equations. Where a closed form exists, the sim is checked against it to machine precision.
+- 🧮 **Living equations** — KaTeX-rendered formulas sit beside every simulation and update *as you drag*, so notation and intuition stay welded together.
+- 🖤 **Zero-friction by design** — no trackers, no cookies, everything computed in your browser. Community features degrade gracefully when signed out.
+- 🗳️ **Community-steered roadmap** — propose and vote on what gets simulated next; the top pick ships.
+
+## 🚀 Quick start
+
+```bash
+git clone https://github.com/rkd0608/i-love-physics.git
+cd i-love-physics
+npm install
+npm run dev          # http://localhost:3000 — works with zero configuration
+```
+
+Optional (community features — accounts, library, collections, voting):
+
+```bash
+cp .env.example .env.local   # fill in your Supabase URL + anon key
+psql "$DATABASE_URL" -f supabase/migrations/0001_init.sql
+```
+
+## 🌌 The collection
+
+**Classical Mechanics** · [Orbits & Gravitation](https://i-love-physics.vercel.app/topics/orbits) · [Projectile Motion](https://i-love-physics.vercel.app/topics/projectile-motion) · [Harmonic Oscillator](https://i-love-physics.vercel.app/topics/harmonic-oscillator) · [Zeno & Achilles](https://i-love-physics.vercel.app/topics/zeno-achilles) · [Brachistochrone](https://i-love-physics.vercel.app/topics/brachistochrone) · [Coupled Oscillators](https://i-love-physics.vercel.app/topics/coupled-modes) · [Angular Momentum](https://i-love-physics.vercel.app/topics/angular-momentum) · [Collision Lab](https://i-love-physics.vercel.app/topics/collision-lab)
+
+**Waves & Optics** · [Wave Interference](https://i-love-physics.vercel.app/topics/wave-interference) · [Fourier Sound](https://i-love-physics.vercel.app/topics/fourier-sound) · [Snell’s Law](https://i-love-physics.vercel.app/topics/snells-law) · [Thin Lenses](https://i-love-physics.vercel.app/topics/thin-lenses) · [Doppler Effect](https://i-love-physics.vercel.app/topics/doppler-effect) · [Standing Waves](https://i-love-physics.vercel.app/topics/standing-waves)
+
+**Electromagnetism** · [Electric Fields](https://i-love-physics.vercel.app/topics/electric-fields) · [Magnetic Dipole](https://i-love-physics.vercel.app/topics/magnetic-dipole) · [Electromagnetic Induction](https://i-love-physics.vercel.app/topics/electromagnetic-induction) · [LC Circuit](https://i-love-physics.vercel.app/topics/lc-circuit)
+
+**Thermal & Statistical** · [Ideal Gas](https://i-love-physics.vercel.app/topics/ideal-gas) · [Carnot Cycle](https://i-love-physics.vercel.app/topics/carnot-cycle) · [Diffusion & Random Walks](https://i-love-physics.vercel.app/topics/diffusion-random-walk) · [Maxwell’s Demon](https://i-love-physics.vercel.app/topics/maxwell-demon)
+
+**Relativity** · [Special Relativity](https://i-love-physics.vercel.app/topics/special-relativity) · [Twin Paradox](https://i-love-physics.vercel.app/topics/twin-paradox)
+
+**Quantum Physics** · [Quantum Double-Slit](https://i-love-physics.vercel.app/topics/quantum-double-slit) · [Quantum Tunneling](https://i-love-physics.vercel.app/topics/quantum-tunneling) · [Heisenberg Uncertainty](https://i-love-physics.vercel.app/topics/heisenberg-uncertainty)
+
+**Chaos & Complexity** · [Double Pendulum](https://i-love-physics.vercel.app/topics/double-pendulum) · [Three-Body Problem](https://i-love-physics.vercel.app/topics/three-body) · [Logistic Map](https://i-love-physics.vercel.app/topics/logistic-map)
+
+**Astrophysics & Cosmology** · [Kepler’s Laws](https://i-love-physics.vercel.app/topics/kepler-laws) · [Hohmann Transfer](https://i-love-physics.vercel.app/topics/hohmann-transfer) · [Cosmological Redshift](https://i-love-physics.vercel.app/topics/cosmological-redshift) · [Olbers’ Paradox](https://i-love-physics.vercel.app/topics/olbers-paradox)
+
+## 🧰 Under the hood
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 App Router · React 19 · TypeScript strict |
+| Simulation engine | Custom Canvas 2D loop — DPR-aware, IntersectionObserver-paused, zero steady-state allocations |
+| Math typesetting | KaTeX, rendered live from sim state |
+| Styling | Tailwind CSS v4 tokens, dark-first cinematic theme |
+| Data & auth | Supabase (Postgres + RLS-enforced schema + cookie sessions) |
+| Hosting | Vercel — 85 routes, 68 of them fully static |
 
 ```
 src/
-├── lib/                  Topic registry, shared types, simulation helpers
+├── app/                  # routes: /topics/* · /explore · /equations · /glossary · /vote · /library …
 ├── components/
-│   ├── sim/              SimFrame: canvas engine, rAF loop, resize + DPR handling
-│   ├── math/             KaTeX rendering primitives
-│   ├── labs/             Self-contained client components embedding SimFrame
-│   ├── layout/           SiteHeader, ThemeToggle, SiteFooter
-│   ├── explore/          Browse/filter UI for the topic catalog
-│   └── home/             Landing-page hero and topic cards
-└── app/
-    ├── page.tsx          Home
-    ├── explore/, about/  Catalog and about pages
-    └── topics/[slug]/    Topic detail pages driven by src/lib/topics.ts
+│   ├── labs/             # 34 self-contained simulation components
+│   ├── sim/              # engine contracts: useSimLoop · SimFrame · controls · useSimParams
+│   ├── math/             # live KaTeX wrapper
+│   └── auth · library · collections · vote · explore · glossary · home
+├── lib/
+│   ├── topics.ts         # typed registry — every topic flows through this contract
+│   ├── equations.ts      # 100+ render-tested expressions
+│   └── supabase/         # graceful-degradation data layer
+└── supabase/migrations/  # schema + RLS policies + seeded proposals
 ```
 
-Labs are self-contained `"use client"` components that embed `SimFrame` and own their own state, controls, and equations — dropping one into any route is a single import.
+## 🗳️ Vote on what ships next
 
-## Deploy (Vercel + Supabase)
+The [/vote booth](https://i-love-physics.vercel.app/vote) is seeded with proposals — fluid dynamics, AC circuits, Fourier optics, the Ising model and more. One vote per account; the leader gets built next.
 
-1. Create a [Supabase](https://supabase.com) project (free tier is enough).
-2. Open the SQL editor and run `supabase/migrations/0001_init.sql` — this creates
-   every table, RLS policy, trigger, and the ten seeded content proposals.
-3. In the Supabase dashboard copy the project URL and anon key.
-4. Import `github.com/rkd0608/i-love-physics` into Vercel — the Next.js preset
-   is detected automatically. Add environment variables:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-5. Deploy. Email/password auth works with the default provider; enable OAuth
-   providers (Google, GitHub) in Supabase Auth settings if desired and the
-   sign-in buttons activate.
+## 🤝 Contributing
 
-Local development:
+Found a physics bug? A typo in the universe? Issues and PRs welcome — every simulation carries its own accuracy checks, so please include how you validated.
 
-```
-cp .env.example .env.local   # paste your URL + anon key
-npm install
-npm run dev
-```
+---
 
-Without env vars the site still builds and runs fully — all community features
-(auth, library, collections, voting) render their signed-out states.
+<div align="center">
+
+Made with ❤️ for physics
+
+</div>

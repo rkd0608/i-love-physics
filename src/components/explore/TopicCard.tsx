@@ -1,5 +1,6 @@
 import Link from "next/link";
 import TeX from "@/components/math/TeX";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 import { COLLECTIONS, DOMAINS, type TopicMeta } from "@/lib/topics";
 
 const LEVEL_DOTS: Record<number, string> = { 1: "●○○", 2: "●●○", 3: "●●●" };
@@ -42,9 +43,10 @@ export default function TopicCard({ topic }: { topic: TopicMeta }) {
           title={`Level ${topic.level}`}
           className="shrink-0 font-mono text-[10px] tracking-widest text-muted"
         >
-          {LEVEL_DOTS[topic.level]}
-        </span>
+        {LEVEL_DOTS[topic.level]}
+      </span>
       </div>
+      <TopicMetrics slug={topic.slug} />
     </Link>
   );
 }

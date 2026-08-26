@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import DoublePendulumLab from "@/components/labs/DoublePendulumLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Double Pendulum",
@@ -103,6 +104,7 @@ export default function DoublePendulumPage() {
               <DoublePendulumLab />
 
               <ProgressToggle slug="double-pendulum" />
+              <TopicMetrics slug="double-pendulum" />
 
       </Section>
 

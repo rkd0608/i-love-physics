@@ -7,6 +7,7 @@ import FourierSoundLab from "@/components/labs/FourierSoundLab";
 import { domainLabel, getTopic } from "@/lib/topics";
 import type { TopicMeta } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Fourier Sound",
@@ -111,6 +112,7 @@ export default function FourierSoundPage() {
               <FourierSoundLab />
 
               <ProgressToggle slug="fourier-sound" />
+              <TopicMetrics slug="fourier-sound" />
 
       </Section>
 

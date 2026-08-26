@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import LCCircuitLab from "@/components/labs/LCCircuitLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "LC Circuit",
@@ -109,6 +110,7 @@ export default function LCCircuitPage() {
               <LCCircuitLab />
 
               <ProgressToggle slug="lc-circuit" />
+              <TopicMetrics slug="lc-circuit" />
 
       </Section>
 

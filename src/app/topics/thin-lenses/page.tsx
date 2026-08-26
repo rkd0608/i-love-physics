@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import ThinLensLab from "@/components/labs/ThinLensLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Thin Lenses",
@@ -102,6 +103,7 @@ export default function ThinLensesPage() {
               <ThinLensLab />
 
               <ProgressToggle slug="thin-lenses" />
+              <TopicMetrics slug="thin-lenses" />
 
       </Section>
 

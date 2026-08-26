@@ -7,6 +7,7 @@ import CoupledModesLab from "@/components/labs/CoupledModesLab";
 import { domainLabel, getTopic } from "@/lib/topics";
 import type { TopicMeta } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Coupled Oscillators",
@@ -112,6 +113,7 @@ export default function CoupledModesPage() {
               <CoupledModesLab />
 
               <ProgressToggle slug="coupled-modes" />
+              <TopicMetrics slug="coupled-modes" />
 
       </Section>
 

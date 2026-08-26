@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import WaveInterferenceLab from "@/components/labs/WaveInterferenceLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Wave Interference",
@@ -104,6 +105,7 @@ export default function WaveInterferencePage() {
               <WaveInterferenceLab />
 
               <ProgressToggle slug="wave-interference" />
+              <TopicMetrics slug="wave-interference" />
 
       </Section>
 

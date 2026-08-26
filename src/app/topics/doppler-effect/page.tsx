@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import DopplerEffectLab from "@/components/labs/DopplerEffectLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Doppler Effect",
@@ -114,6 +115,7 @@ export default function DopplerEffectPage() {
               <DopplerEffectLab />
 
               <ProgressToggle slug="doppler-effect" />
+              <TopicMetrics slug="doppler-effect" />
 
       </Section>
 

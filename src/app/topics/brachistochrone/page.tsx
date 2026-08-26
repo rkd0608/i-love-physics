@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import BrachistochroneLab from "@/components/labs/BrachistochroneLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Brachistochrone",
@@ -115,6 +116,7 @@ export default function BrachistochronePage() {
               <BrachistochroneLab />
 
               <ProgressToggle slug="brachistochrone" />
+              <TopicMetrics slug="brachistochrone" />
 
       </Section>
 

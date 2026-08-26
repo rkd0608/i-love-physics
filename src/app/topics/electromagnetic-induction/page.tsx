@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import InductionLab from "@/components/labs/InductionLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Electromagnetic Induction",
@@ -108,6 +109,7 @@ export default function ElectromagneticInductionPage() {
               <InductionLab />
 
               <ProgressToggle slug="electromagnetic-induction" />
+              <TopicMetrics slug="electromagnetic-induction" />
 
       </Section>
 

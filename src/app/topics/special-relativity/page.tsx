@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import SpecialRelativityLab from "@/components/labs/SpecialRelativityLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Special Relativity",
@@ -109,6 +110,7 @@ export default function SpecialRelativityPage() {
               <SpecialRelativityLab />
 
               <ProgressToggle slug="special-relativity" />
+              <TopicMetrics slug="special-relativity" />
 
       </Section>
 

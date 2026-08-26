@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import DiffusionWalkLab from "@/components/labs/DiffusionWalkLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Diffusion & Random Walks",
@@ -105,6 +106,7 @@ export default function DiffusionRandomWalkPage() {
               <DiffusionWalkLab />
 
               <ProgressToggle slug="diffusion-random-walk" />
+              <TopicMetrics slug="diffusion-random-walk" />
 
       </Section>
 

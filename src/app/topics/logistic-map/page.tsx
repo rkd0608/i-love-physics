@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import LogisticMapLab from "@/components/labs/LogisticMapLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Logistic Map",
@@ -106,6 +107,7 @@ export default function LogisticMapPage() {
               <LogisticMapLab />
 
               <ProgressToggle slug="logistic-map" />
+              <TopicMetrics slug="logistic-map" />
 
       </Section>
 

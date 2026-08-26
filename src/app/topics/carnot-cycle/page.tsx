@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import CarnotCycleLab from "@/components/labs/CarnotCycleLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Carnot Cycle",
@@ -104,6 +105,7 @@ export default function CarnotCyclePage() {
               <CarnotCycleLab />
 
               <ProgressToggle slug="carnot-cycle" />
+              <TopicMetrics slug="carnot-cycle" />
 
       </Section>
 

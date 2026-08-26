@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import StandingWavesLab from "@/components/labs/StandingWavesLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Standing Waves",
@@ -135,6 +136,7 @@ export default function StandingWavesPage() {
               <StandingWavesLab />
 
               <ProgressToggle slug="standing-waves" />
+              <TopicMetrics slug="standing-waves" />
 
       </Section>
 

@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import AngularMomentumLab from "@/components/labs/AngularMomentumLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Angular Momentum",
@@ -106,6 +107,7 @@ export default function AngularMomentumPage() {
               <AngularMomentumLab />
 
               <ProgressToggle slug="angular-momentum" />
+              <TopicMetrics slug="angular-momentum" />
 
       </Section>
 

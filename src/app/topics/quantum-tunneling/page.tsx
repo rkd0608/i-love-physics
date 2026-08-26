@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import QuantumTunnelingLab from "@/components/labs/QuantumTunnelingLab";
 import { domainLabel, getTopic } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Quantum Tunneling",
@@ -107,6 +108,7 @@ export default function QuantumTunnelingPage() {
               <QuantumTunnelingLab />
 
               <ProgressToggle slug="quantum-tunneling" />
+              <TopicMetrics slug="quantum-tunneling" />
 
       </Section>
 

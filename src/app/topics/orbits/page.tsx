@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import OrbitsLab from "@/components/labs/OrbitsLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Orbits & Gravitation",
@@ -103,6 +104,7 @@ export default function OrbitsPage() {
               <OrbitsLab />
 
               <ProgressToggle slug="orbits" />
+              <TopicMetrics slug="orbits" />
 
       </Section>
 

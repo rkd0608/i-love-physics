@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import TwinParadoxLab from "@/components/labs/TwinParadoxLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Twin Paradox",
@@ -114,6 +115,7 @@ export default function TwinParadoxPage() {
               <TwinParadoxLab />
 
               <ProgressToggle slug="twin-paradox" />
+              <TopicMetrics slug="twin-paradox" />
 
       </Section>
 

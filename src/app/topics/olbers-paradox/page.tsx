@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import OlbersParadoxLab from "@/components/labs/OlbersParadoxLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Olbers’ Paradox",
@@ -105,6 +106,7 @@ export default function OlbersParadoxPage() {
               <OlbersParadoxLab />
 
               <ProgressToggle slug="olbers-paradox" />
+              <TopicMetrics slug="olbers-paradox" />
 
       </Section>
 

@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import ThreeBodyLab from "@/components/labs/ThreeBodyLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Three-Body Problem",
@@ -104,6 +105,7 @@ export default function ThreeBodyPage() {
               <ThreeBodyLab />
 
               <ProgressToggle slug="three-body" />
+              <TopicMetrics slug="three-body" />
 
       </Section>
 

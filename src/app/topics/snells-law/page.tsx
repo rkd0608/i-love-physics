@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import SnellsLawLab from "@/components/labs/SnellsLawLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Snell’s Law",
@@ -103,6 +104,7 @@ export default function SnellsLawPage() {
               <SnellsLawLab />
 
               <ProgressToggle slug="snells-law" />
+              <TopicMetrics slug="snells-law" />
 
       </Section>
 

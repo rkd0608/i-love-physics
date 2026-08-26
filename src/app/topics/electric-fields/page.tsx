@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import ElectricFieldLab from "@/components/labs/ElectricFieldLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Electric Fields",
@@ -108,6 +109,7 @@ export default function ElectricFieldsPage() {
               <ElectricFieldLab />
 
               <ProgressToggle slug="electric-fields" />
+              <TopicMetrics slug="electric-fields" />
 
       </Section>
 

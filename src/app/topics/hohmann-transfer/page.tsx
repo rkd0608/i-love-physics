@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import HohmannTransferLab from "@/components/labs/HohmannTransferLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Hohmann Transfer",
@@ -108,6 +109,7 @@ export default function HohmannTransferPage() {
               <HohmannTransferLab />
 
               <ProgressToggle slug="hohmann-transfer" />
+              <TopicMetrics slug="hohmann-transfer" />
 
       </Section>
 

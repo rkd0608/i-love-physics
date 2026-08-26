@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import MaxwellDemonLab from "@/components/labs/MaxwellDemonLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Maxwell’s Demon",
@@ -104,6 +105,7 @@ export default function MaxwellDemonPage() {
               <MaxwellDemonLab />
 
               <ProgressToggle slug="maxwell-demon" />
+              <TopicMetrics slug="maxwell-demon" />
 
       </Section>
 

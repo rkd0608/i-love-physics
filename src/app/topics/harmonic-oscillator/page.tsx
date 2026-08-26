@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import HarmonicOscillatorLab from "@/components/labs/HarmonicOscillatorLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Harmonic Oscillator",
@@ -108,6 +109,7 @@ export default function HarmonicOscillatorPage() {
               <HarmonicOscillatorLab />
 
               <ProgressToggle slug="harmonic-oscillator" />
+              <TopicMetrics slug="harmonic-oscillator" />
 
       </Section>
 

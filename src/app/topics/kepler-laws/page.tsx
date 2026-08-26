@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import KeplerLawsLab from "@/components/labs/KeplerLawsLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Kepler’s Laws",
@@ -103,6 +104,7 @@ export default function KeplerLawsPage() {
               <KeplerLawsLab />
 
               <ProgressToggle slug="kepler-laws" />
+              <TopicMetrics slug="kepler-laws" />
 
       </Section>
 

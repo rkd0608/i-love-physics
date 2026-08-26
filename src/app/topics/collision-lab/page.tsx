@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import CollisionLab from "@/components/labs/CollisionLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Collision Lab",
@@ -106,6 +107,7 @@ export default function CollisionLabPage() {
               <CollisionLab />
 
               <ProgressToggle slug="collision-lab" />
+              <TopicMetrics slug="collision-lab" />
 
       </Section>
 

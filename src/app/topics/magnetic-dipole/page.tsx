@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import MagneticDipoleLab from "@/components/labs/MagneticDipoleLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Magnetic Dipole",
@@ -103,6 +104,7 @@ export default function MagneticDipolePage() {
               <MagneticDipoleLab />
 
               <ProgressToggle slug="magnetic-dipole" />
+              <TopicMetrics slug="magnetic-dipole" />
 
       </Section>
 

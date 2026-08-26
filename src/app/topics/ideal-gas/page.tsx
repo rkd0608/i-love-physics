@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import IdealGasLab from "@/components/labs/IdealGasLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Ideal Gas",
@@ -110,6 +111,7 @@ export default function IdealGasPage() {
               <IdealGasLab />
 
               <ProgressToggle slug="ideal-gas" />
+              <TopicMetrics slug="ideal-gas" />
 
       </Section>
 

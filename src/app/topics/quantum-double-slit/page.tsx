@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import QuantumDoubleSlitLab from "@/components/labs/QuantumDoubleSlitLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
 import ProgressToggle from "@/components/library/ProgressToggle";
+import TopicMetrics from "@/components/metrics/TopicMetrics";
 
 export const metadata: Metadata = {
   title: "Quantum Double-Slit",
@@ -105,6 +106,7 @@ export default function QuantumDoubleSlitPage() {
               <QuantumDoubleSlitLab />
 
               <ProgressToggle slug="quantum-double-slit" />
+              <TopicMetrics slug="quantum-double-slit" />
 
       </Section>
 
