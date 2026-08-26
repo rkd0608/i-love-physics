@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import SnellsLawLab from "@/components/labs/SnellsLawLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Snell’s Law",
@@ -97,8 +98,12 @@ export default function SnellsLawPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <SnellsLawLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <SnellsLawLab />
+
+              <ProgressToggle slug="snells-law" />
+
       </Section>
 
       <Section index="03" title="The equations">

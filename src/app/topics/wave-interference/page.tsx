@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import WaveInterferenceLab from "@/components/labs/WaveInterferenceLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Wave Interference",
@@ -98,8 +99,12 @@ export default function WaveInterferencePage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <WaveInterferenceLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <WaveInterferenceLab />
+
+              <ProgressToggle slug="wave-interference" />
+
       </Section>
 
       <Section index="03" title="The equations">

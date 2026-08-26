@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import ElectricFieldLab from "@/components/labs/ElectricFieldLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Electric Fields",
@@ -102,8 +103,12 @@ export default function ElectricFieldsPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <ElectricFieldLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <ElectricFieldLab />
+
+              <ProgressToggle slug="electric-fields" />
+
       </Section>
 
       <Section index="03" title="The equations">

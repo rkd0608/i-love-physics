@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import CoupledModesLab from "@/components/labs/CoupledModesLab";
 import { domainLabel, getTopic } from "@/lib/topics";
 import type { TopicMeta } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Coupled Oscillators",
@@ -106,8 +107,12 @@ export default function CoupledModesPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <CoupledModesLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <CoupledModesLab />
+
+              <ProgressToggle slug="coupled-modes" />
+
       </Section>
 
       <Section index="03" title="The equations">

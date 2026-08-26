@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import HohmannTransferLab from "@/components/labs/HohmannTransferLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Hohmann Transfer",
@@ -102,8 +103,12 @@ export default function HohmannTransferPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <HohmannTransferLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <HohmannTransferLab />
+
+              <ProgressToggle slug="hohmann-transfer" />
+
       </Section>
 
       <Section index="03" title="The equations">

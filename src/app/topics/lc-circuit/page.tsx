@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import LCCircuitLab from "@/components/labs/LCCircuitLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "LC Circuit",
@@ -103,8 +104,12 @@ export default function LCCircuitPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <LCCircuitLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <LCCircuitLab />
+
+              <ProgressToggle slug="lc-circuit" />
+
       </Section>
 
       <Section index="03" title="The equations">

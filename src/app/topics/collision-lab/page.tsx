@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import CollisionLab from "@/components/labs/CollisionLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Collision Lab",
@@ -100,8 +101,12 @@ export default function CollisionLabPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <CollisionLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <CollisionLab />
+
+              <ProgressToggle slug="collision-lab" />
+
       </Section>
 
       <Section index="03" title="The equations">

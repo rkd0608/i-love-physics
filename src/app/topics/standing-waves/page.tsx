@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import StandingWavesLab from "@/components/labs/StandingWavesLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Standing Waves",
@@ -129,8 +130,12 @@ export default function StandingWavesPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <StandingWavesLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <StandingWavesLab />
+
+              <ProgressToggle slug="standing-waves" />
+
       </Section>
 
       <Section index="03" title="The equations">

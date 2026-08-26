@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import LogisticMapLab from "@/components/labs/LogisticMapLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Logistic Map",
@@ -100,8 +101,12 @@ export default function LogisticMapPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <LogisticMapLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <LogisticMapLab />
+
+              <ProgressToggle slug="logistic-map" />
+
       </Section>
 
       <Section index="03" title="The equations">

@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import TwinParadoxLab from "@/components/labs/TwinParadoxLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Twin Paradox",
@@ -108,8 +109,12 @@ export default function TwinParadoxPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <TwinParadoxLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <TwinParadoxLab />
+
+              <ProgressToggle slug="twin-paradox" />
+
       </Section>
 
       <Section index="03" title="The equations">

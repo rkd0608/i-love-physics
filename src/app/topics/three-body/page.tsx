@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import ThreeBodyLab from "@/components/labs/ThreeBodyLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Three-Body Problem",
@@ -98,8 +99,12 @@ export default function ThreeBodyPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <ThreeBodyLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <ThreeBodyLab />
+
+              <ProgressToggle slug="three-body" />
+
       </Section>
 
       <Section index="03" title="The equations">

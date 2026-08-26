@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import OrbitsLab from "@/components/labs/OrbitsLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Orbits & Gravitation",
@@ -97,8 +98,12 @@ export default function OrbitsPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <OrbitsLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <OrbitsLab />
+
+              <ProgressToggle slug="orbits" />
+
       </Section>
 
       <Section index="03" title="The equations">

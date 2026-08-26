@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import SpecialRelativityLab from "@/components/labs/SpecialRelativityLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Special Relativity",
@@ -103,8 +104,12 @@ export default function SpecialRelativityPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <SpecialRelativityLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <SpecialRelativityLab />
+
+              <ProgressToggle slug="special-relativity" />
+
       </Section>
 
       <Section index="03" title="The equations">

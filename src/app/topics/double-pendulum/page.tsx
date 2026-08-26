@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import DoublePendulumLab from "@/components/labs/DoublePendulumLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Double Pendulum",
@@ -97,8 +98,12 @@ export default function DoublePendulumPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <DoublePendulumLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <DoublePendulumLab />
+
+              <ProgressToggle slug="double-pendulum" />
+
       </Section>
 
       <Section index="03" title="The equations">

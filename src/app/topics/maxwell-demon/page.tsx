@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import MaxwellDemonLab from "@/components/labs/MaxwellDemonLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Maxwell’s Demon",
@@ -98,8 +99,12 @@ export default function MaxwellDemonPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <MaxwellDemonLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <MaxwellDemonLab />
+
+              <ProgressToggle slug="maxwell-demon" />
+
       </Section>
 
       <Section index="03" title="The equations">

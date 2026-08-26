@@ -6,6 +6,7 @@ import TeX from "@/components/math/TeX";
 import FourierSoundLab from "@/components/labs/FourierSoundLab";
 import { domainLabel, getTopic } from "@/lib/topics";
 import type { TopicMeta } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Fourier Sound",
@@ -105,8 +106,12 @@ export default function FourierSoundPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <FourierSoundLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <FourierSoundLab />
+
+              <ProgressToggle slug="fourier-sound" />
+
       </Section>
 
       <Section index="03" title="The equations">

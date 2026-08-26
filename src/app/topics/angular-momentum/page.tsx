@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import AngularMomentumLab from "@/components/labs/AngularMomentumLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Angular Momentum",
@@ -100,8 +101,12 @@ export default function AngularMomentumPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <AngularMomentumLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <AngularMomentumLab />
+
+              <ProgressToggle slug="angular-momentum" />
+
       </Section>
 
       <Section index="03" title="The equations">

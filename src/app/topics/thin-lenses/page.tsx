@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import ThinLensLab from "@/components/labs/ThinLensLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Thin Lenses",
@@ -96,8 +97,12 @@ export default function ThinLensesPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <ThinLensLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <ThinLensLab />
+
+              <ProgressToggle slug="thin-lenses" />
+
       </Section>
 
       <Section index="03" title="The equations">

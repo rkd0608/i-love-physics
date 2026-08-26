@@ -37,3 +37,28 @@ src/
 ```
 
 Labs are self-contained `"use client"` components that embed `SimFrame` and own their own state, controls, and equations — dropping one into any route is a single import.
+
+## Deploy (Vercel + Supabase)
+
+1. Create a [Supabase](https://supabase.com) project (free tier is enough).
+2. Open the SQL editor and run `supabase/migrations/0001_init.sql` — this creates
+   every table, RLS policy, trigger, and the ten seeded content proposals.
+3. In the Supabase dashboard copy the project URL and anon key.
+4. Import `github.com/rkd0608/i-love-physics` into Vercel — the Next.js preset
+   is detected automatically. Add environment variables:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+5. Deploy. Email/password auth works with the default provider; enable OAuth
+   providers (Google, GitHub) in Supabase Auth settings if desired and the
+   sign-in buttons activate.
+
+Local development:
+
+```
+cp .env.example .env.local   # paste your URL + anon key
+npm install
+npm run dev
+```
+
+Without env vars the site still builds and runs fully — all community features
+(auth, library, collections, voting) render their signed-out states.

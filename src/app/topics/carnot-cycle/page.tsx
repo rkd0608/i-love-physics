@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import CarnotCycleLab from "@/components/labs/CarnotCycleLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Carnot Cycle",
@@ -98,8 +99,12 @@ export default function CarnotCyclePage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <CarnotCycleLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <CarnotCycleLab />
+
+              <ProgressToggle slug="carnot-cycle" />
+
       </Section>
 
       <Section index="03" title="The equations">

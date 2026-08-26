@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import QuantumTunnelingLab from "@/components/labs/QuantumTunnelingLab";
 import { domainLabel, getTopic } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Quantum Tunneling",
@@ -101,8 +102,12 @@ export default function QuantumTunnelingPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <QuantumTunnelingLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <QuantumTunnelingLab />
+
+              <ProgressToggle slug="quantum-tunneling" />
+
       </Section>
 
       <Section index="03" title="The equations">

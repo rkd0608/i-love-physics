@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import HeisenbergUncertaintyLab from "@/components/labs/HeisenbergUncertaintyLab";
 import { domainLabel, getTopic, type TopicMeta } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Heisenberg Uncertainty",
@@ -100,8 +101,12 @@ export default function HeisenbergUncertaintyPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <HeisenbergUncertaintyLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <HeisenbergUncertaintyLab />
+
+              <ProgressToggle slug="heisenberg-uncertainty" />
+
       </Section>
 
       <Section index="03" title="The equations">

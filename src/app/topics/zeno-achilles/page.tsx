@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import ZenoAchillesLab from "@/components/labs/ZenoAchillesLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Zeno & Achilles",
@@ -98,8 +99,12 @@ export default function ZenoAchillesPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <ZenoAchillesLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <ZenoAchillesLab />
+
+              <ProgressToggle slug="zeno-achilles" />
+
       </Section>
 
       <Section index="03" title="The equations">

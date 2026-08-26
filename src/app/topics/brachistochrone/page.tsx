@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import BrachistochroneLab from "@/components/labs/BrachistochroneLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Brachistochrone",
@@ -109,8 +110,12 @@ export default function BrachistochronePage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <BrachistochroneLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <BrachistochroneLab />
+
+              <ProgressToggle slug="brachistochrone" />
+
       </Section>
 
       <Section index="03" title="The equations">

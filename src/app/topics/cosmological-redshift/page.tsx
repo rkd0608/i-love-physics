@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import RedshiftLab from "@/components/labs/RedshiftLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Cosmological Redshift",
@@ -97,8 +98,12 @@ export default function CosmologicalRedshiftPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <RedshiftLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <RedshiftLab />
+
+              <ProgressToggle slug="cosmological-redshift" />
+
       </Section>
 
       <Section index="03" title="The equations">

@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import IdealGasLab from "@/components/labs/IdealGasLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Ideal Gas",
@@ -104,8 +105,12 @@ export default function IdealGasPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <IdealGasLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <IdealGasLab />
+
+              <ProgressToggle slug="ideal-gas" />
+
       </Section>
 
       <Section index="03" title="The equations">

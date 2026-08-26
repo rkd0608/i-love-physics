@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import OlbersParadoxLab from "@/components/labs/OlbersParadoxLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Olbers’ Paradox",
@@ -99,8 +100,12 @@ export default function OlbersParadoxPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <OlbersParadoxLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <OlbersParadoxLab />
+
+              <ProgressToggle slug="olbers-paradox" />
+
       </Section>
 
       <Section index="03" title="The equations">

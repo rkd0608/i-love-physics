@@ -5,6 +5,7 @@ import TopicCard from "@/components/explore/TopicCard";
 import TeX from "@/components/math/TeX";
 import InductionLab from "@/components/labs/InductionLab";
 import { domainLabel, getTopic, relatedTopics } from "@/lib/topics";
+import ProgressToggle from "@/components/library/ProgressToggle";
 
 export const metadata: Metadata = {
   title: "Electromagnetic Induction",
@@ -102,8 +103,12 @@ export default function ElectromagneticInductionPage() {
         </p>
       </Section>
 
-      <Section index="02" title="Interactive simulation" wide>
-        <InductionLab />
+              <Section index="02" title="Interactive simulation" wide>
+
+              <InductionLab />
+
+              <ProgressToggle slug="electromagnetic-induction" />
+
       </Section>
 
       <Section index="03" title="The equations">
