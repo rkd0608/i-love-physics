@@ -53,19 +53,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section index="02" title="How the simulations work">
-        <p className="leading-relaxed text-fg/90">
-          Every scene renders with Canvas 2D and advances through fixed-step
-          integrators — semi-implicit Euler where stability matters, RK4 where
-          accuracy does, and closed-form solutions wherever analytics exist.
-          Equations are typeset live by KaTeX, so the notation updates with the
-          very parameters you drag. Nothing else sits in the loop per pixel:
-          the render path is a single draw function inside one
-          requestAnimationFrame cycle.
-        </p>
-      </Section>
-
-      <Section index="03" title="Accessibility">
+      <Section index="02" title="Accessibility">
         <ul className="list-disc space-y-2 pl-5 marker:text-accent">
           <li className="leading-relaxed text-fg/90">
             Reduced-motion support — ambient animation slows or freezes when
@@ -82,7 +70,7 @@ export default function AboutPage() {
         </ul>
       </Section>
 
-      <Section index="04" title="Accuracy statement">
+      <Section index="03" title="Accuracy statement">
         <p className="leading-relaxed text-fg/90">
           Every simulation is checked against analytic limits before shipping:
           orbital periods against Kepler’s third law, vacuum ranges against the
@@ -91,15 +79,6 @@ export default function AboutPage() {
           envelope against its closed-form solution. Where numerics and theory
           disagree, the numerics lose. Where a model is knowingly approximate,
           the page says so.
-        </p>
-      </Section>
-
-      <Section index="05" title="Colophon">
-        <p className="leading-relaxed text-fg/90">
-          Built with Next.js, styled with Tailwind CSS, drawn with Canvas 2D,
-          and typeset by KaTeX — including the letters in the equations you are
-          about to steer. No accounts, no trackers, no cookies; everything runs
-          in your browser.
         </p>
       </Section>
     </div>
