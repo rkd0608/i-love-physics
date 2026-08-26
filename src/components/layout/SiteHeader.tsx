@@ -33,7 +33,7 @@ export default async function SiteHeader() {
           <span className="text-lg font-semibold tracking-tight">i love physics</span>
         </Link>
         <NavLinks />
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
           <AccountMenu user={user} configured={configured} />
         </div>

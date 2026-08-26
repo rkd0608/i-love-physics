@@ -47,6 +47,20 @@ body {
   font-family: var(--font-stack-sans);
 }
 
+button:not(:disabled),
+summary:not(.static),
+[role="button"]:not(:disabled),
+label:has(input[type="range"]),
+label:has(input[type="checkbox"]),
+label:has(input[type="radio"]),
+select {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 input[type="range"] {
   appearance: none;
   height: 20px;
